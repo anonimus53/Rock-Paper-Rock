@@ -1,3 +1,4 @@
+//random choise of the pc
 function getComputerChoice(){
    let x = Math.floor(Math.random() * 10);
    if(x < 3){
@@ -10,50 +11,87 @@ function getComputerChoice(){
     return 'SCISSORS';
    }
 }
-let count = 0;
-let count2 = 0;
-function playRound() {
-    let choise = prompt('Chose between(Rock, Paper and scissors) by typing the word here: ');
-    const playerSelection = choise.toUpperCase();
-    console.log('You choise: ' + playerSelection);
-    const computerSelection = getComputerChoice();
-    console.log("Computer's choise: " + computerSelection);
-    if(playerSelection !== 'ROCK' && playerSelection !== 'PAPER' && playerSelection !== 'SCISSORS'){
-        return "You typed your choise wrong, the round is ignored"
-    }
 
+//the restart button
+let restart = document.getElementById('restart');
+//this counts the player's wins
+let countMan = 0;
+let man = document.getElementById('playerScore');
+man.textContent = countMan;
+//and this the computer's
+let computer = document.getElementById('pcScore');;
+let countPc = 0;
+computer.textContent = countPc;
+//winners
+let winner = document.getElementById('winner');
+//outcome
+let outcome = document.getElementById('roundOutcome');
+//pc's choise
+let pc = document.getElementById('pc');
+//this fuction plays one round
+function playRound(choise) {
+    if(countMan < 5 && countPc < 5){
+    const playerSelection = choise.toUpperCase();
+
+    console.log('You choise: ' + playerSelection);
+
+    const computerSelection = getComputerChoice();
+
+    console.log("Computer's choise: " + computerSelection);
+
+    pc.textContent = computerSelection;
+    
     if(playerSelection == computerSelection){
-        return "It's a Tie!";
+        console.log("It's a Tie!");
+        outcome.textContent = "It's a Tie!";
     }
     else if((playerSelection == 'ROCK' && computerSelection == 'PAPER')||(playerSelection == 'PAPER' && computerSelection == 'SCISSORS' )||(playerSelection == 'SCISSORS' && computerSelection == 'ROCK' )){
-        count2++;
-        return 'You Lose! ' + computerSelection + ' defeats ' + playerSelection;
+        console.log("You Lose!");
+        outcome.textContent = "You Lost.";
+        countPc++;
+        computer.textContent = countPc;
     }
     else{
-        count++;
-        return "You Win! " + playerSelection + ' defeats ' + computerSelection;
+        console.log("You Win!");
+        outcome.textContent = "You Won.";
+        countMan++;
+        man.textContent = countMan;
     }
+   }else if(countMan == 5){
+    winner.textContent = 'Player Wins!!!'
+   }
+   else{
+    winner.textContent = 'Computer Wins!'
+   }
+   
   }
+const rock = document.getElementById('rock');
+const paper = document.getElementById('paper');
+const scissors = document.getElementById('scissors');
 
-function game(){
-    let round = 1;
-  
-    for(let i=0; i<5; i++){
-        console.log(' Current Round: ' + round);
-        
-        round++
-        
-        console.log(playRound());
-    }
-    console.log('calculating the Score...')
-    if(count > count2){
-        return 'You are the Winner!!!'
-    }
-    else if(count < count2){
-       return 'Computer Wins!...better luck next time.'
-    }
-    else{
-        return "It's a Draw!"
-    }
-}
-console.log(game());
+rock.addEventListener('click', function(){
+   
+    playRound('rock');
+});
+paper.addEventListener('click', function(){
+    
+    playRound('paper');
+});
+scissors.addEventListener('click',function(){
+    
+    playRound('scissors');
+});
+//end game
+
+
+//restart button
+restart.addEventListener('click', function(){
+    winner.textContent = ' ';
+    outcome.textContent = " ";
+    countMan = 0;
+    countPc = 0;
+    man.textContent = countMan;
+    computer.textContent = countPc;
+    pc.textContent = 'Waitting...'
+});
+

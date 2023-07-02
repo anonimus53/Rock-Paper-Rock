@@ -4,9 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock-Paper-GAME</title>
+    <script src="code.js" defer></script>
 </head>
 <body>
-    <script src="code.js"></script>
-    
+    <div id="pcChoise">Computer choise: <span id="pc">Waitting...</span></div>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+    <div id="roundOutcome"></div>
+    <div id="results">
+        <!--Display results here-->
+        <div>Player Score: <span id="playerScore"></span></div>
+        <div>PC Score: <span id="pcScore"></span></div>
+        <div id="winner"></div>
+    </div>
+    <button id="restart">RESTART</button>
 </body>
 </html>
