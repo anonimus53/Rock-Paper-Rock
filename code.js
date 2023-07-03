@@ -30,7 +30,7 @@ let outcome = document.getElementById('roundOutcome');
 let pc = document.getElementById('pc');
 //this fuction plays one round
 function playRound(choise) {
-    if(countMan < 5 && countPc < 5){
+    if(countMan <= 4 && countPc <= 4){
     const playerSelection = choise.toUpperCase();
 
     console.log('You choise: ' + playerSelection);
