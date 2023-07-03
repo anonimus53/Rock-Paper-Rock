@@ -13,24 +13,24 @@ function getComputerChoice(){
 }
 
 //the restart button
-let restart = document.getElementById('restart');
+const restart = document.getElementById('restart');
 //this counts the player's wins
 let countMan = 0;
-let man = document.getElementById('playerScore');
+const man = document.getElementById('playerScore');
 man.textContent = countMan;
 //and this the computer's
-let computer = document.getElementById('pcScore');;
+const computer = document.getElementById('pcScore');;
 let countPc = 0;
 computer.textContent = countPc;
 //winners
-let winner = document.getElementById('winner');
+const winner = document.getElementById('winner');
 //outcome
-let outcome = document.getElementById('roundOutcome');
+const outcome = document.getElementById('roundOutcome');
 //pc's choise
-let pc = document.getElementById('pc');
+const pc = document.getElementById('pc');
 //this fuction plays one round
 function playRound(choise) {
-    if(countMan <= 4 && countPc <= 4){
+    if(countMan < 4 && countPc < 4){
     const playerSelection = choise.toUpperCase();
 
     console.log('You choise: ' + playerSelection);
