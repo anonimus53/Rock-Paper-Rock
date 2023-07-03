@@ -50,21 +50,22 @@ function playRound(choise) {
         outcome.textContent = "You Lost.";
         countPc++;
         computer.textContent = countPc;
+       if(countPc == 5){
+           winner.textContent = 'Computer Wins!'
+       }
     }
     else{
         console.log("You Win!");
         outcome.textContent = "You Won.";
         countMan++;
         man.textContent = countMan;
+       if(countMan == 5){
+           winner.textContent = 'Player Wins!!!'
+       }
     }
-   }else if(countMan == 5){
-    winner.textContent = 'Player Wins!!!'
-   }
-   else{
-    winner.textContent = 'Computer Wins!'
-   }
    
   }
+}  
 const rock = document.getElementById('rock');
 const paper = document.getElementById('paper');
 const scissors = document.getElementById('scissors');
